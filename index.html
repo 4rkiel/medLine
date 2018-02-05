@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+          <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+ 
+        <div id="resBox">
+            <textarea id="rulesIf" rows="5" placeholder="If" ></textarea>
+            <textarea id="rulesSo" rows="5" placeholder="So" ></textarea>
+            <textarea id="rulesLvl" rows="5" placeholder="Level" ></textarea>
+            <textarea id="facts" rows="5" placeholder="Facts" ></textarea>
+            <textarea id="results" rows="5" placeholder="Results" readonly ></textarea>
+        </div>
+        <form>
+            <input 
+                type="file" id="fileReader" multiple 
+                accept=".csv"
+                onchange="readFile(event)" 
+            />
+        </form>
+
+    
+        <div id="wrapper"></div>
+
+    </body>
+
+    <script type="text/javascript" src="script.js"></script>
+</html>
