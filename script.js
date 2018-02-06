@@ -8,15 +8,47 @@ var facts = document.getElementById('facts');
 var results = document.getElementById('results');
 
 
-// TODO to OBJECT
+var rulesList = [];
+var factsList = [];
 
 
-// TODO Parse rules so 
-// TODO Parse rules lvl
-// TODO Parse facts
 
 
-// TODO parse if non
+
+function expertJob (){
+
+    for(var ifW=0; ifW < rulesList.length; ifW++){
+
+        var check = true;
+
+        for(var k=0; k < rulesList[ifW].if.length; k++){
+           
+            var subCheck = false;
+
+            for (var faW=0; faW < factsList.length; faW++){
+                for (var h=0; h < factsList[faW].length; h++){
+
+                    if (rulesList[ifW].if[k] == factsList[faW][h]){
+                        subCheck = subCheck || true;
+                    }
+
+                }
+            }
+
+            check = check && subCheck;
+        }
+
+        if (check){
+            console.log(rulesList[ifW].if);
+
+            // TODO ADD TO Facts
+            
+            // Reboot without it
+        }
+    }
+}
+
+
 
 function parseTxt (){
 
@@ -28,7 +60,6 @@ function parseTxt (){
 
     str = str.split('\n');
 
-    var ruIf = [];
 
     for (var k=0; k < str.length; k++){
 
@@ -44,10 +75,98 @@ function parseTxt (){
             }
         }
 
-        ruIf.push(tmp);
+        rulesList.push({if:tmp});
     }
 
-    console.log(ruIf);
+
+    str = rulesSo.innerHTML;
+
+    while(str.charAt(str.length - 1) == '\n'){
+        str = str.slice(0, -1);
+    }
+
+    str = str.split('\n');
+
+
+    for (var k=0; k < str.length; k++){
+
+       var tmp = str[k].split(/&amp;/g);
+        for(var h=0; h < tmp.length; h++){
+            
+            while (tmp[h].charAt(0) == ' '){
+                tmp[h] = tmp[h].slice(1);
+            }
+
+            while (tmp[h].charAt(tmp[h].length -1) == ' '){
+                tmp[h] = tmp[h].slice(0, -1);
+            }
+        }
+
+        rulesList[k].so = tmp;
+    }
+
+
+    str = rulesLvl.innerHTML;
+
+    while(str.charAt(str.length - 1) == '\n'){
+        str = str.slice(0, -1);
+    }
+
+    str = str.split('\n');
+
+
+    for (var k=0; k < str.length; k++){
+
+       var tmp = str[k].split(/&amp;/g);
+        for(var h=0; h < tmp.length; h++){
+            
+            while (tmp[h].charAt(0) == ' '){
+                tmp[h] = tmp[h].slice(1);
+            }
+
+            while (tmp[h].charAt(tmp[h].length -1) == ' '){
+                tmp[h] = tmp[h].slice(0, -1);
+            }
+        }
+
+        rulesList[k].lvl = tmp;
+    }
+
+
+    str = facts.innerHTML;
+
+    while(str.charAt(str.length - 1) == '\n'){
+        str = str.slice(0, -1);
+    }
+
+    str = str.split('\n');
+
+
+    for (var k=0; k < str.length; k++){
+
+       var tmp = str[k].split(/&amp;/g);
+        for(var h=0; h < tmp.length; h++){
+            
+            while (tmp[h].charAt(0) == ' '){
+                tmp[h] = tmp[h].slice(1);
+            }
+
+            while (tmp[h].charAt(tmp[h].length -1) == ' '){
+                tmp[h] = tmp[h].slice(0, -1);
+            }
+        }
+
+        factsList.push(tmp);
+    }
+
+
+    console.log(rulesList);
+    console.log(factsList);
+
+
+    expertJob();
+
+
 }
 
 
@@ -77,10 +196,14 @@ function readTxt (str){
 
                     rulesSo.innerHTML = rulesSo.innerHTML + tmpCol[h] + '\n';
 
+                    if (tmpCol.length < 3){
+                        rulesLvl.innerHTML = rulesLvl.innerHTML + "1" + '\n';
+                    }
+
                     break;
 
                 case 2:
-
+                    
                     if (tmpCol.length > 3){
                         rulesLvl.innerHTML = rulesLvl.innerHTML + tmpCol[h] + '\n';
                     } else {
