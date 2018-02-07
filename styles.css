@@ -28,14 +28,29 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 }
 
-#resBox > textarea {
-    margin: 1vh 1vw;
+#resBox > span {
+    margin: 1vh 0;
     padding: 1vh 1vw;
     resize: none;
+    background: #fff;
+    width: 15vw;
+    line-height: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
-body > form {
+
+#resBox > span input {
+    border: none;
+    box-shadow: 0px 2px 0px 0px #AAA;
+    padding: 0.5rem;
+}
+
+
+
+#wrapper > form {
     margin: 1vh 1vw;
 }

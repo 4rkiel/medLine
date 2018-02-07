@@ -271,3 +271,39 @@ function readFile (e){
     }
 
 }
+
+
+
+
+function pastRules (e){
+    var tg = e.target;
+    console.log(tg);
+}
+
+
+function pastFacts (e){
+
+}
+
+
+function pastRes (e){
+
+}
+
+
+
+
+function editRules (e){
+    var tg = e.target;
+    console.log(tg);
+}
+
+
+function editFacts (e){
+
+}
+
+
+function editRes (e){
+
+}

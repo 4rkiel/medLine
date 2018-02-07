@@ -7,22 +7,39 @@
     <body>
  
         <div id="resBox">
-            <textarea id="rulesIf" rows="5" placeholder="If" ></textarea>
-            <textarea id="rulesSo" rows="5" placeholder="So" ></textarea>
-            <textarea id="rulesLvl" rows="5" placeholder="Level" ></textarea>
-            <textarea id="facts" rows="5" placeholder="Facts" ></textarea>
-            <textarea id="results" rows="5" placeholder="Results" readonly ></textarea>
-        </div>
-        <form>
-            <input 
-                type="file" id="fileReader" multiple 
-                accept=".csv"
-                onchange="readFile(event)" 
-            />
-        </form>
+            <span id="rulesIf" onkeyup="editRules(event)">
+                <input type="search" placeholder="If" />
+            </span>
 
+            <span id="rulesSo" onkeyup="editRules(event)">
+                <input type="search" placeholder="So" />
+            </span>
+
+            <span id="rulesLvl" onkeyup="editRules(event)">
+                <input type="search" placeholder="Level" />
+            </span>
+
+            <span id="facts" onkeyup="editFacts(event)">
+                <input type="search" placeholder="Fact" />
+            </span>
+
+            <span id="results" onkeyup="editRules(event)">
+                <input type="search" placeholder="Result" />
+            </span>
+
+        </div>
     
-        <div id="wrapper"></div>
+        <div id="wrapper">
+            <form>
+                <input 
+                    type="file" id="fileReader" multiple 
+                    accept=".csv"
+                    onchange="readFile(event)" 
+                />
+            </form>
+            <span id="msg"></span>
+
+        </div>
 
     </body>
 
